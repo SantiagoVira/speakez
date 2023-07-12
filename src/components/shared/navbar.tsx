@@ -20,15 +20,10 @@ const Navbar: React.FC = () => {
       <div className="flex flex-1 items-center justify-start">
         <Link
           href="/"
-          className={cn(
-            "flex items-center justify-center rounded-full p-[0.3625rem] transition hover:-translate-y-0.5 hover:fill-white/80",
-            router.pathname === "/"
-              ? "bg-black/40 fill-white"
-              : "bg-black/20 fill-[#9f9fa2]"
-          )}
+          className="flex items-center justify-center rounded-full p-[0.3625rem] transition hover:-translate-y-0.5 hover:fill-white/80"
           aria-label="Home"
         >
-          <Logo size="1.4rem" inherit />
+          <Logo size="2.25rem" inherit />
         </Link>
       </div>
 
@@ -46,7 +41,7 @@ const Navbar: React.FC = () => {
           <Fragment key={i}>
             <Tab {...tab} />
             {i != mainTabs.length - 1 && (
-              <div className="border-text-300/40 mx-3 h-2/3 w-0 border-l-[1px]" />
+              <div className="mx-3 h-2/3 w-0 border-l-[1px] border-text-300/40" />
             )}
           </Fragment>
         ))}

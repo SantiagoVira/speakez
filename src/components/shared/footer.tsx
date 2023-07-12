@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
   return (
     <div className="bg-secondary flex h-44 w-screen flex-col items-center justify-center gap-3 px-10 shadow md:h-32 md:flex-row md:justify-between">
       <div className="flex items-center gap-2 md:gap-4">
-        <Logo size={isMobile ? "2rem" : "4.5rem"} />
+        <Logo size={isMobile ? "2rem" : "4rem"} />
         <div className="flex h-full flex-col justify-between">
           <h1 className="text-[2rem] tracking-tight text-text-100">SpeakEZ</h1>
           {!isMobile && <p className="text-text-200">Catchphrase</p>}

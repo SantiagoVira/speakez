@@ -16,10 +16,7 @@ const MobileNavbar: React.FC = () => {
         <Link
           href="/"
           aria-label="Home"
-          className={cn(
-            "flex items-center justify-center",
-            router.pathname === "/" ? "fill-white" : "fill-[#9f9fa2]"
-          )}
+          className="flex items-center justify-center"
         >
           <Logo size="1.4rem" inherit />
         </Link>
