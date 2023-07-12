@@ -2,8 +2,6 @@ import { Header } from "~/components/shared/header";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import { cn } from "~/utils/cn";
-import useWindowSize from "~/utils/useWindowSize";
-import MobileNavbar from "./mobile-navbar";
 import Loading from "./loading";
 
 const Layout: React.FC<
@@ -14,13 +12,11 @@ const Layout: React.FC<
     loading?: boolean;
   }>
 > = ({ title, className, noFooter = false, loading = false, children }) => {
-  const { isMobile } = useWindowSize();
-
   return (
     <main className="bg-main relative flex min-h-screen flex-col items-center text-text-100">
       <Header title={title} />
       <div className="absolute top-0">
-        {isMobile ? <MobileNavbar /> : <Navbar />}
+        <Navbar />
       </div>
 
       <div

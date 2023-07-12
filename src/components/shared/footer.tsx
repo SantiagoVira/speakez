@@ -1,5 +1,13 @@
 import Link from "next/link";
-import { BsDiscord, BsGithub, BsInstagram } from "react-icons/bs";
+import {
+  BsDiscord,
+  BsEnvelope,
+  BsEnvelopeAtFill,
+  BsEnvelopeFill,
+  BsGithub,
+  BsInstagram,
+  BsTwitter,
+} from "react-icons/bs";
 import { useState } from "react";
 import type { IconType } from "react-icons";
 import { cn } from "~/utils/cn";
@@ -10,22 +18,22 @@ const Footer: React.FC = () => {
     <div className="flex h-44 w-screen flex-col items-center justify-center gap-3 px-10 shadow md:h-32 md:flex-row md:justify-between">
       <div className="align-center flex justify-between gap-4">
         <SocialIcon
-          label="Instagram"
-          link="https://www.instagram.com/kreanto_org/"
+          label="Twitter"
+          link="https://www.twitter.com"
           hoverLbl={hoverLbl}
           setHoverLbl={setHoverLbl}
-          Icon={BsInstagram}
+          Icon={BsTwitter}
         />
         <SocialIcon
-          label="Github"
-          link="https://github.com/kreanto-org/kreanto"
+          label="Email"
+          link="https://gmail.com"
           hoverLbl={hoverLbl}
           setHoverLbl={setHoverLbl}
-          Icon={BsGithub}
+          Icon={BsEnvelopeFill}
         />
         <SocialIcon
           label="Discord"
-          link="https://discord.gg/hJVysPaaDb"
+          link="https://discord.com"
           hoverLbl={hoverLbl}
           setHoverLbl={setHoverLbl}
           Icon={BsDiscord}
