@@ -10,6 +10,10 @@ body {
   @apply bg-bg-secondary-light dark:bg-bg-secondary-dark;
 }
 
-.highlight-fill {
+.fill-highlight {
   @apply fill-highlight-light dark:fill-highlight-dark;
+}
+
+.text-highlight {
+  @apply text-highlight-light dark:text-highlight-dark;
 }

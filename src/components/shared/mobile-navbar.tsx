@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { cn } from "~/utils/cn";
 import { useRouter } from "next/router";
 import Logo from "./logo";
 import { useTabs } from "./tabs";

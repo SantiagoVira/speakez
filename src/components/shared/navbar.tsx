@@ -16,14 +16,14 @@ const Navbar: React.FC = () => {
   const mainTabs = useTabs();
 
   return (
-    <div className="flex h-14 w-screen items-center justify-between px-20 pb-1 pt-4">
+    <div className="flex h-14 w-screen items-center justify-between px-10 pb-1 pt-4">
       <div className="flex flex-1 items-center justify-start">
         <Link
           href="/"
-          className="flex items-center justify-center rounded-full p-[0.3625rem] transition hover:-translate-y-0.5 hover:fill-white/80"
+          className="flex items-center justify-center rounded-full pt-6 transition hover:-translate-y-0.5 hover:fill-white/80"
           aria-label="Home"
         >
-          <Logo size="2.25rem" inherit />
+          <Logo size="4rem" />
         </Link>
       </div>
 
