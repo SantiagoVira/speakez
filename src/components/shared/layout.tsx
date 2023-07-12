@@ -17,7 +17,7 @@ const Layout: React.FC<
   const { isMobile } = useWindowSize();
 
   return (
-    <main className="bg-bg-main text-text-100 relative flex min-h-screen flex-col items-center">
+    <main className="bg-main relative flex min-h-screen flex-col items-center text-text-100">
       <Header title={title} />
       <div className="absolute top-0">
         {isMobile ? <MobileNavbar /> : <Navbar />}

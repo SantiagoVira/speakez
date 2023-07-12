@@ -22,7 +22,7 @@ const Button: React.FC<IButtonProps> = ({
       aria-label={name}
       title={name}
       className={cn(
-        `rounded-lg bg-bg-200 px-3 py-[0.4rem] text-highlight transition-all hover:bg-opacity-[0.95] hover:opacity-90 disabled:opacity-5`,
+        `bg-secondary rounded-lg px-3 py-[0.4rem] text-highlight transition-all hover:bg-opacity-[0.95] hover:opacity-90 disabled:opacity-5`,
         className
       )}
     >

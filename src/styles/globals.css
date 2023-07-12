@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-main,
+body {
+  @apply bg-bg-main-light dark:bg-bg-main-dark;
+}
+.bg-secondary {
+  @apply bg-bg-secondary-light dark:bg-bg-secondary-dark;
+}
