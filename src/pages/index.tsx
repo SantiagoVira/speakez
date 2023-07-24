@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { useState } from "react";
 import type { IconType } from "react-icons";
-import { BsInfo } from "react-icons/bs";
-import { FaArrowsRotate } from "react-icons/fa6";
+import { BsInfo, BsPlayFill } from "react-icons/bs";
+import { FaArrowsRotate, FaICursor } from "react-icons/fa6";
 import { CgDarkMode } from "react-icons/cg";
 import Layout from "~/components/shared/layout";
-import Button from "~/components/ui/button";
 import { cn } from "~/utils/cn";
 import { changeColor } from "~/utils/colorMode";
+import { TbWorldCog } from "react-icons/tb";
 
 export default function Home() {
   const [phrase, setPhrase] = useState(
@@ -23,6 +23,9 @@ export default function Home() {
           onClick={() => setPhrase("Hi")}
           className="hover:rotate-12 active:rotate-180"
         />
+        <ToolbarButton Icon={BsPlayFill} onClick={changeColor} />
+        <ToolbarButton Icon={TbWorldCog} onClick={changeColor} />
+        <ToolbarButton Icon={FaICursor} onClick={changeColor} />
       </div>
       <p>{phrase}</p>
     </Layout>
