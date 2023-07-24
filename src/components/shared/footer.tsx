@@ -1,13 +1,5 @@
 import Link from "next/link";
-import {
-  BsDiscord,
-  BsEnvelope,
-  BsEnvelopeAtFill,
-  BsEnvelopeFill,
-  BsGithub,
-  BsInstagram,
-  BsTwitter,
-} from "react-icons/bs";
+import { BsDiscord, BsEnvelopeFill, BsTwitter } from "react-icons/bs";
 import { useState } from "react";
 import type { IconType } from "react-icons";
 import { cn } from "~/utils/cn";

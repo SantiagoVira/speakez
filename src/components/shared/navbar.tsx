@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "./logo";
 import useWindowSize from "~/utils/useWindowSize";
+import { TbWorldBolt } from "react-icons/tb";
 
 const Navbar: React.FC = () => {
   const { isMobile } = useWindowSize();
@@ -16,7 +17,12 @@ const Navbar: React.FC = () => {
           <Logo size={isMobile ? "2.75rem" : "4rem"} />
         </Link>
       </div>
-      <div className="flex h-full flex-1 items-center justify-end"></div>
+      <div className="flex h-full flex-1 items-center justify-end">
+        {" "}
+        <Link href="/impact">
+          <TbWorldBolt className="text-highlight" size="2rem" />
+        </Link>
+      </div>
     </div>
   );
 };
