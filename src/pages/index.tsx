@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { useState } from "react";
 import type { IconType } from "react-icons";
+import { BsInfo } from "react-icons/bs";
 import { FaArrowsRotate } from "react-icons/fa6";
+import { CgDarkMode } from "react-icons/cg";
 import Layout from "~/components/shared/layout";
 import Button from "~/components/ui/button";
 import { cn } from "~/utils/cn";
@@ -13,17 +15,16 @@ export default function Home() {
   );
   return (
     <Layout>
-      <Button name="color-mode-switch" onClick={changeColor}>
-        Color
-      </Button>
-      <div className="rounded bg-highlight-light px-5 py-3 dark:bg-highlight-dark">
+      <div className="flex gap-2 rounded bg-highlight-light px-4 py-2 dark:bg-highlight-dark">
+        <ToolbarButton Icon={BsInfo} href="/info" />
+        <ToolbarButton Icon={CgDarkMode} onClick={changeColor} />
         <ToolbarButton
           Icon={FaArrowsRotate}
           onClick={() => setPhrase("Hi")}
-          className="transition-all hover:rotate-12 hover:scale-110 active:rotate-180"
+          className="hover:rotate-12 active:rotate-180"
         />
       </div>
-      <p className="transition-all hover:scale-150">{phrase}</p>
+      <p>{phrase}</p>
     </Layout>
   );
 }
@@ -31,19 +32,28 @@ export default function Home() {
 export const ToolbarButton: React.FC<
   React.PropsWithChildren<{
     Icon: IconType;
-    onClick: () => void;
+    onClick?: () => void;
     linkClassName?: string;
     className?: string;
     href?: string;
   }>
-> = ({ Icon, onClick, linkClassName = "", className = "", href = "" }) => {
+> = ({
+  Icon,
+  onClick = () => 0,
+  linkClassName = "",
+  className = "",
+  href = "",
+}) => {
   return (
     <Link
       href={href}
       className={cn("text-bg-main-light dark:text-bg-main-dark", linkClassName)}
       onClick={onClick}
     >
-      <Icon size="1.5rem" className={cn(className)} />
+      <Icon
+        size="1.5rem"
+        className={cn("transition-all hover:scale-110", className)}
+      />
     </Link>
   );
 };
