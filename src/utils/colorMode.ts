@@ -19,7 +19,6 @@ export const changeColor = () => {
       localStorage.setItem("theme", "dark");
     }
   }
-  console.log(localStorage.theme);
 };
 
 export const setColor = (color: "light" | "dark") => {
