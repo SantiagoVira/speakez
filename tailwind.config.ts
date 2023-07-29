@@ -26,6 +26,9 @@ export default {
           300: "#757575",
         },
       },
+      fontFamily: {
+        ubuntu: ["Ubuntu", "sans-serif"],
+      },
     },
   },
   plugins: [],
