@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { useState } from "react";
 import type { IconType } from "react-icons";
-import { BsInfo, BsPlayFill } from "react-icons/bs";
-import { FaArrowsRotate, FaICursor } from "react-icons/fa6";
+import { BsInfo } from "react-icons/bs";
+import { FaArrowsRotate } from "react-icons/fa6";
 import { CgDarkMode } from "react-icons/cg";
 import Layout from "~/components/shared/layout";
 import { cn } from "~/utils/cn";
 import { changeColor } from "~/utils/colorMode";
 import { TbWorldCog } from "react-icons/tb";
 import { LengthSelector } from "~/components/home page/length-selector";
+import AudioButtons from "~/components/home page/audio-recorder";
 
 export default function Home() {
   const [phrase, setPhrase] = useState(
@@ -16,7 +17,7 @@ export default function Home() {
   );
   return (
     <Layout>
-      <div className="bg-highlight flex gap-2 rounded px-4 py-2">
+      <div className="bg-highlight flex gap-2 rounded px-4 py-2 transition-all">
         <ToolbarButton Icon={BsInfo} href="/info" />
         <ToolbarButton Icon={CgDarkMode} onClick={changeColor} />
         <ToolbarButton
@@ -24,8 +25,8 @@ export default function Home() {
           onClick={() => setPhrase("Hi")}
           className="hover:rotate-12 active:rotate-180"
         />
-        <ToolbarButton Icon={BsPlayFill} onClick={changeColor} />
-        <ToolbarButton Icon={TbWorldCog} onClick={changeColor} />
+        <AudioButtons />
+        <ToolbarButton Icon={TbWorldCog} onClick={() => 0} />
         <LengthSelector />
       </div>
       <p className="mt-6 max-w-[25rem] text-center font-ubuntu text-3xl font-medium text-highlight-light dark:text-highlight-dark">
