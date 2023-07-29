@@ -8,6 +8,7 @@ import Layout from "~/components/shared/layout";
 import { cn } from "~/utils/cn";
 import { changeColor } from "~/utils/colorMode";
 import { TbWorldCog } from "react-icons/tb";
+import { LengthSelector } from "~/components/length-selector";
 
 export default function Home() {
   const [phrase, setPhrase] = useState(
@@ -24,8 +25,8 @@ export default function Home() {
           className="hover:rotate-12 active:rotate-180"
         />
         <ToolbarButton Icon={BsPlayFill} onClick={changeColor} />
-        <ToolbarButton Icon={TbWorldCog} onClick={changeColor} />
         <ToolbarButton Icon={FaICursor} onClick={changeColor} />
+        <LengthSelector />
       </div>
       <p>{phrase}</p>
     </Layout>
