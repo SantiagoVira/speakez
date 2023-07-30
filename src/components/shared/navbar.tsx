@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Logo from "./logo";
 import useWindowSize from "~/utils/useWindowSize";
 import { TbWorldBolt } from "react-icons/tb";
+import HoverLogo from "../home page/hover-logo";
 
 const Navbar: React.FC = () => {
   const { isMobile } = useWindowSize();
@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
           className="flex items-center justify-center rounded-full pt-6 transition hover:-translate-y-0.5 hover:fill-white/80"
           aria-label="Home"
         >
-          <Logo size={isMobile ? "2.75rem" : "4rem"} />
+          <HoverLogo width={isMobile ? "2.75rem" : "4rem"} />
         </Link>
       </div>
       <div className="flex h-full flex-1 items-center justify-end">
