@@ -29,6 +29,9 @@ export default {
       fontFamily: {
         ubuntu: ["Ubuntu", "sans-serif"],
       },
+      transitionProperty: {
+        width: "width",
+      },
     },
   },
   plugins: [],

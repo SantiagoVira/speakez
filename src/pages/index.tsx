@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <div className="bg-highlight flex gap-2 rounded px-4 py-2 transition-all">
+      <div className="bg-highlight flex w-fit transform gap-2 rounded px-4 py-2">
         <ToolbarButton Icon={BsInfo} href="/info" />
         <ToolbarButton Icon={CgDarkMode} onClick={changeColor} />
         <ToolbarButton
