@@ -11,6 +11,7 @@ import { TbWorldCog } from "react-icons/tb";
 import { LengthSelector } from "~/components/home page/length-selector";
 import AudioButtons from "~/components/home page/audio-recorder";
 import { choosePhrase, type lengths } from "~/utils/phrases";
+import Results from "~/components/home page/results";
 
 export default function Home() {
   const [phrase, setPhrase] = useState(
@@ -39,6 +40,7 @@ export default function Home() {
       <p className="mt-6 max-w-[25rem] text-center font-ubuntu text-3xl font-medium text-highlight-light dark:text-highlight-dark">
         {phrase}
       </p>
+      <Results />
     </Layout>
   );
 }
