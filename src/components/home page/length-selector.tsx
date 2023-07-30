@@ -1,10 +1,12 @@
 import { FaICursor } from "react-icons/fa6";
 import LengthRadioButton from "./length-radio-button";
-import { useState } from "react";
+import type { lengths } from "~/utils/phrases";
 
-export const LengthSelector: React.FC = () => {
-  const [quoteLength, setQuoteLength] = useState<10 | 30 | 60>(10);
-
+export const LengthSelector: React.FC<{
+  length: lengths;
+  setLength: React.Dispatch<React.SetStateAction<lengths>>;
+  onChange: (len: lengths) => void;
+}> = ({ length, setLength, onChange }) => {
   return (
     <div className="group relative flex text-bg-main-light dark:text-bg-main-dark">
       <FaICursor size="1.5rem" className="z-0 transition-all hover:scale-110" />
@@ -20,18 +22,30 @@ export const LengthSelector: React.FC = () => {
         <LengthRadioButton
           groupName="length"
           title="10"
-          onClick={() => setQuoteLength(10)}
+          onClick={() => {
+            setLength(10);
+            onChange(10);
+          }}
+          selected={length === 10}
           left
         />
         <LengthRadioButton
           groupName="length"
           title="30"
-          onClick={() => setQuoteLength(30)}
+          onClick={() => {
+            setLength(30);
+            onChange(30);
+          }}
+          selected={length === 30}
         />
         <LengthRadioButton
           groupName="length"
           title="60"
-          onClick={() => setQuoteLength(60)}
+          onClick={() => {
+            setLength(60);
+            onChange(60);
+          }}
+          selected={length === 60}
           right
         />
       </span>

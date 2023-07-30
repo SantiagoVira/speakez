@@ -10,11 +10,14 @@ import { changeColor } from "~/utils/colorMode";
 import { TbWorldCog } from "react-icons/tb";
 import { LengthSelector } from "~/components/home page/length-selector";
 import AudioButtons from "~/components/home page/audio-recorder";
+import { choosePhrase, type lengths } from "~/utils/phrases";
 
 export default function Home() {
   const [phrase, setPhrase] = useState(
     "The quick brown fox jumps over the lazy dog."
   );
+  const [length, setLength] = useState<lengths>(10);
+
   return (
     <Layout>
       <div className="bg-highlight flex gap-2 rounded px-4 py-2 transition-all">
@@ -22,12 +25,16 @@ export default function Home() {
         <ToolbarButton Icon={CgDarkMode} onClick={changeColor} />
         <ToolbarButton
           Icon={FaArrowsRotate}
-          onClick={() => setPhrase("Hi")}
+          onClick={() => setPhrase(choosePhrase(length, phrase))}
           className="hover:rotate-12 active:rotate-180"
         />
         <AudioButtons />
         <ToolbarButton Icon={TbWorldCog} onClick={() => 0} />
-        <LengthSelector />
+        <LengthSelector
+          length={length}
+          setLength={setLength}
+          onChange={(len: lengths) => setPhrase(choosePhrase(len, phrase))}
+        />
       </div>
       <p className="mt-6 max-w-[25rem] text-center font-ubuntu text-3xl font-medium text-highlight-light dark:text-highlight-dark">
         {phrase}
