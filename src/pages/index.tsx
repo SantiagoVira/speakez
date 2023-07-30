@@ -11,6 +11,7 @@ import { TbWorldCog } from "react-icons/tb";
 import { LengthSelector } from "~/components/home page/length-selector";
 import AudioButtons from "~/components/home page/audio-recorder";
 import { choosePhrase, type lengths } from "~/utils/phrases";
+import HoverLogo from "~/components/home page/hover-logo";
 
 export default function Home() {
   const [phrase, setPhrase] = useState(
@@ -20,6 +21,7 @@ export default function Home() {
 
   return (
     <Layout>
+      <HoverLogo />
       <div className="bg-highlight flex w-fit transform gap-2 rounded px-4 py-2">
         <ToolbarButton Icon={BsInfo} href="/info" />
         <ToolbarButton Icon={CgDarkMode} onClick={changeColor} />
