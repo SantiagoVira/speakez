@@ -14,7 +14,7 @@ export default {
         bg: {
           main: {
             light: "#fcedcf",
-            dark: "#6d3619",
+            dark: "#a97253",
           },
           secondary: {
             light: "#FFD19A",
@@ -54,7 +54,7 @@ export default {
           content: {
             subtle: "#9ca3af", // gray-400
             DEFAULT: "#6b7280", // gray-500
-            emphasis: "#fcedcf", // ---------------
+            emphasis: "#6d3619", // ---------------
             strong: "#111827", // gray-900
             inverted: "#ffffff", // white
           },
@@ -83,7 +83,7 @@ export default {
           content: {
             subtle: "#4b5563", // gray-600
             DEFAULT: "#6b7280", // gray-600
-            emphasis: "#6d3619", // -----------
+            emphasis: "#000000", // -----------
             strong: "#f9fafb", // gray-50
             inverted: "#000000", // black
           },
