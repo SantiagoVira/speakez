@@ -11,7 +11,7 @@ const addAudioElement = (blob: Blob) => {
   document.body.appendChild(audio);
 };
 
-const AudioButtons: React.FC = () => {
+const AudioButtons: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
   const {
     startRecording,
     stopRecording,
@@ -41,7 +41,15 @@ const AudioButtons: React.FC = () => {
         <IconButton onClick={startRecording} Icon={BsPlayFill} />
       )}
 
-      {isRecording && <IconButton Icon={BsStopFill} onClick={stopRecording} />}
+      {isRecording && (
+        <IconButton
+          Icon={BsStopFill}
+          onClick={() => {
+            stopRecording();
+            onComplete();
+          }}
+        />
+      )}
       {/* <AudioRecorder
         onRecordingComplete={addAudioElement}
         audioTrackConstraints={{
@@ -65,7 +73,7 @@ const IconButton: React.FC<{ Icon: IconType; onClick: () => void }> = ({
     <Icon
       onClick={onClick}
       size="1.5rem"
-      className="text-bg-main-light transition-all hover:scale-110 dark:text-bg-main-dark"
+      className="transition-all text-bg-main-light hover:scale-110 dark:text-bg-main-dark"
     />
   );
 };

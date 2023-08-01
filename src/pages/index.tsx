@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { IconType } from "react-icons";
 import { BsInfo } from "react-icons/bs";
 import { FaArrowsRotate } from "react-icons/fa6";
@@ -54,10 +54,13 @@ const sampleData = {
 };
 
 export default function Home() {
-  const [phrase, setPhrase] = useState(
-    "The quick brown fox jumps over the lazy dog."
-  );
+  const [phrase, setPhrase] = useState("");
   const [length, setLength] = useState<lengths>(10);
+  const [didFinish, setDidFinish] = useState(false);
+
+  useEffect(() => {
+    setPhrase(choosePhrase(10));
+  }, []);
 
   return (
     <Layout>
@@ -69,7 +72,7 @@ export default function Home() {
           onClick={() => setPhrase(choosePhrase(length, phrase))}
           className="hover:rotate-12 active:rotate-180"
         />
-        <AudioButtons />
+        <AudioButtons onComplete={() => setDidFinish(true)} />
         <ToolbarButton Icon={TbWorldCog} onClick={() => 0} />
         <LengthSelector
           length={length}
@@ -80,7 +83,7 @@ export default function Home() {
       <p className="mt-6 max-w-[25rem] text-center font-ubuntu text-3xl font-medium text-highlight-light dark:text-highlight-dark">
         {phrase}
       </p>
-      <Results {...sampleData} />
+      {didFinish && <Results {...sampleData} />}
     </Layout>
   );
 }
