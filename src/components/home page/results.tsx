@@ -1,6 +1,6 @@
 import { cn } from "~/utils/cn";
 import Gauge from "./gauge";
-import { BarList } from "@tremor/react";
+import { BarList, DonutChart } from "@tremor/react";
 
 const data = [
   {
@@ -18,6 +18,22 @@ const data = [
   {
     name: "IN",
     value: 191,
+  },
+];
+
+const fillers = [
+  {
+    word: "Uh",
+    count: 1,
+  },
+
+  {
+    word: "Actually",
+    count: 2,
+  },
+  {
+    word: "Basically",
+    count: 2,
   },
 ];
 
@@ -41,9 +57,26 @@ const Results: React.FC = () => {
         <p className="text-[5rem] font-bold">10</p>
       </ResultBox>
       <ResultBox size={2} className="tremor-barList-bar:fill-red-500">
+        <p className="text-center text-2xl font-medium">Data</p>
         <BarList data={data} className="mt-2" />
       </ResultBox>{" "}
-      <ResultBox size={2}></ResultBox>
+      <ResultBox size={2}>
+        <p className="text-center text-2xl font-medium">Filler Words</p>
+        <DonutChart
+          data={fillers}
+          index="word"
+          category="count"
+          colors={["orange", "orange", "orange", "orange", "orange", "orange"]}
+          label="5 fillers"
+        />
+        {/* <div className="flex h-full flex-1 flex-col items-start justify-center">
+          {fillers.map(({ word, count }, i) => (
+            <p key={i} className="text-black">
+              {word}: {count}
+            </p>
+          ))}
+        </div> */}
+      </ResultBox>
     </div>
   );
 };
