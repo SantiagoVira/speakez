@@ -13,6 +13,46 @@ import AudioButtons from "~/components/home page/audio-recorder";
 import { choosePhrase, type lengths } from "~/utils/phrases";
 import Results from "~/components/home page/results";
 
+const sampleData = {
+  wpm: 51,
+  acc: 62,
+  stutters: 14,
+  hardOnset: 10,
+  bars: [
+    {
+      name: "PR",
+      value: 456,
+    },
+    {
+      name: "BL",
+      value: 351,
+    },
+    {
+      name: "SR",
+      value: 271,
+    },
+    {
+      name: "IN",
+      value: 191,
+    },
+  ],
+  fillers: [
+    {
+      word: "Uh",
+      count: 1,
+    },
+
+    {
+      word: "Actually",
+      count: 2,
+    },
+    {
+      word: "Basically",
+      count: 2,
+    },
+  ],
+};
+
 export default function Home() {
   const [phrase, setPhrase] = useState(
     "The quick brown fox jumps over the lazy dog."
@@ -40,7 +80,7 @@ export default function Home() {
       <p className="mt-6 max-w-[25rem] text-center font-ubuntu text-3xl font-medium text-highlight-light dark:text-highlight-dark">
         {phrase}
       </p>
-      <Results />
+      <Results {...sampleData} />
     </Layout>
   );
 }

@@ -2,63 +2,35 @@ import { cn } from "~/utils/cn";
 import Gauge from "./gauge";
 import { BarList, DonutChart } from "@tremor/react";
 
-const data = [
-  {
-    name: "PR",
-    value: 456,
-  },
-  {
-    name: "BL",
-    value: 351,
-  },
-  {
-    name: "SR",
-    value: 271,
-  },
-  {
-    name: "IN",
-    value: 191,
-  },
-];
-
-const fillers = [
-  {
-    word: "Uh",
-    count: 1,
-  },
-
-  {
-    word: "Actually",
-    count: 2,
-  },
-  {
-    word: "Basically",
-    count: 2,
-  },
-];
-
-const Results: React.FC = () => {
+const Results: React.FC<{
+  wpm: number;
+  acc: number;
+  stutters: number;
+  hardOnset: number;
+  bars: { name: string; value: number }[];
+  fillers: { word: string; count: number }[];
+}> = ({ wpm, acc, stutters, hardOnset, bars, fillers }) => {
   return (
     <div className="text-highlight mt-4 grid w-full grid-cols-4 grid-rows-2 gap-3 px-10">
       <ResultBox className="flex flex-col items-center justify-center">
         <p className="text-center text-2xl font-medium">WPM</p>
-        <Gauge id="WPM" amount={51} total={120} />
+        <Gauge id="WPM" amount={wpm} total={120} />
       </ResultBox>
       <ResultBox className="flex flex-col items-center">
         <p className="text-center text-2xl font-medium">ACC</p>
-        <Gauge id="WPM" amount={62} total={120} />
+        <Gauge id="ACC" amount={acc} total={120} />
       </ResultBox>
       <ResultBox className="flex flex-col items-center">
         <p className="text-center text-2xl font-medium">Stutters</p>
-        <p className="text-[5rem] font-bold">14</p>
+        <p className="text-[5rem] font-bold">{stutters}</p>
       </ResultBox>
       <ResultBox className="flex flex-col items-center">
         <p className="text-center text-2xl font-medium">Hard-Onset</p>
-        <p className="text-[5rem] font-bold">10</p>
+        <p className="text-[5rem] font-bold">{hardOnset}</p>
       </ResultBox>
       <ResultBox size={2} className="tremor-barList-bar:fill-red-500">
         <p className="text-center text-2xl font-medium">Data</p>
-        <BarList data={data} className="mt-2" />
+        <BarList data={bars} className="mt-2" />
       </ResultBox>{" "}
       <ResultBox size={2}>
         <p className="text-center text-2xl font-medium">Filler Words</p>
@@ -67,7 +39,10 @@ const Results: React.FC = () => {
           index="word"
           category="count"
           colors={["orange", "orange", "orange", "orange", "orange", "orange"]}
-          label="5 fillers"
+          label={`${fillers.reduce(
+            (partialSum, a) => partialSum + a.count,
+            0
+          )} fillers`}
         />
         {/* <div className="flex h-full flex-1 flex-col items-start justify-center">
           {fillers.map(({ word, count }, i) => (
