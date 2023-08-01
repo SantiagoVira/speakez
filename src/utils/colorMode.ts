@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 export const changeColor = () => {
   // if set via local storage previously
   if (localStorage.getItem("theme")) {
@@ -23,4 +25,14 @@ export const changeColor = () => {
 
 export const setColor = (color: "light" | "dark") => {
   localStorage.theme = color;
+};
+
+export const useIsDark = () => {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    setIsDark(localStorage.theme === "dark");
+  }, []);
+
+  return { isDark };
 };
