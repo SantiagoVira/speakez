@@ -1,5 +1,26 @@
 import { cn } from "~/utils/cn";
 import Gauge from "./gauge";
+import { BarList } from "@tremor/react";
+
+const data = [
+  {
+    name: "PR",
+    value: 456,
+  },
+  {
+    name: "BL",
+    value: 351,
+  },
+  {
+    name: "SR",
+    value: 271,
+  },
+  {
+    name: "IN",
+    value: 191,
+  },
+];
+
 const Results: React.FC = () => {
   return (
     <div className="text-highlight mt-4 grid w-full grid-cols-4 grid-rows-2 gap-3 px-10">
@@ -19,7 +40,10 @@ const Results: React.FC = () => {
         <p className="text-center text-2xl font-medium">Hard-Onset</p>
         <p className="text-[5rem] font-bold">10</p>
       </ResultBox>
-      <ResultBox size={2}></ResultBox> <ResultBox size={2}></ResultBox>
+      <ResultBox size={2} className="tremor-barList-bar:fill-red-500">
+        <BarList data={data} className="mt-2" />
+      </ResultBox>{" "}
+      <ResultBox size={2}></ResultBox>
     </div>
   );
 };
