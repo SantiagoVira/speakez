@@ -15,6 +15,10 @@ export interface ResultData {
   fillers: FillerData[];
 }
 
+interface ResultSectionProps extends ResultData {
+  variant?: "hidden" | "visible";
+}
+
 const container = {
   hidden: { opacity: 1, scale: 0 },
   visible: {
@@ -35,18 +39,19 @@ const item = {
   },
 };
 
-const Results: React.FC<ResultData> = ({
+const Results: React.FC<ResultSectionProps> = ({
   wpm,
   acc,
   stutters,
   hardOnset,
   bars,
   fillers,
+  variant = "visible",
 }) => {
   return (
     <motion.div
       initial="hidden"
-      animate="visible"
+      animate={variant}
       variants={container}
       className="text-highlight mt-4 grid w-full grid-cols-4 grid-rows-2 gap-3 px-10"
     >

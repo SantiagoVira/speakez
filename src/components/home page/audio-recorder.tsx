@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useAudioRecorder } from "react-audio-voice-recorder";
 import type { IconType } from "react-icons";
 import { BsPauseFill, BsPlayFill, BsStopFill } from "react-icons/bs";
@@ -11,7 +11,9 @@ const addAudioElement = (blob: Blob) => {
   document.body.appendChild(audio);
 };
 
-const AudioButtons: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
+const AudioButtons: React.FC<{
+  setDidFinish: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ setDidFinish }) => {
   const {
     startRecording,
     stopRecording,
@@ -38,7 +40,13 @@ const AudioButtons: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
           <IconButton onClick={togglePauseResume} Icon={BsPauseFill} />
         )
       ) : (
-        <IconButton onClick={startRecording} Icon={BsPlayFill} />
+        <IconButton
+          onClick={() => {
+            startRecording();
+            setDidFinish(false);
+          }}
+          Icon={BsPlayFill}
+        />
       )}
 
       {isRecording && (
@@ -46,7 +54,7 @@ const AudioButtons: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
           Icon={BsStopFill}
           onClick={() => {
             stopRecording();
-            onComplete();
+            setDidFinish(true);
           }}
         />
       )}

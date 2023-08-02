@@ -72,7 +72,7 @@ export default function Home() {
           onClick={() => setPhrase(choosePhrase(length, phrase))}
           className="hover:rotate-12 active:rotate-180"
         />
-        <AudioButtons onComplete={() => setDidFinish(true)} />
+        <AudioButtons setDidFinish={setDidFinish} />
         <ToolbarButton Icon={TbWorldCog} onClick={() => 0} />
         <LengthSelector
           length={length}
@@ -83,7 +83,7 @@ export default function Home() {
       <p className="mt-6 max-w-[25rem] text-center font-ubuntu text-3xl font-medium text-highlight-light dark:text-highlight-dark">
         {phrase}
       </p>
-      {didFinish && <Results {...sampleData} />}
+      <Results {...sampleData} variant={didFinish ? "visible" : "hidden"} />
     </Layout>
   );
 }
