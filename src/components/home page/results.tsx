@@ -57,11 +57,11 @@ const Results: React.FC<ResultSectionProps> = ({
     >
       <ResultBox className="flex flex-col items-center justify-center">
         <p className="text-center text-2xl font-medium">WPM</p>
-        {variant === "visible" && <Gauge id="WPM" amount={wpm} total={120} />}
+        {variant === "visible" && <Gauge amount={wpm} total={120} />}
       </ResultBox>
       <ResultBox className="flex flex-col items-center">
         <p className="text-center text-2xl font-medium">ACC</p>
-        {variant === "visible" && <Gauge id="ACC" amount={acc} total={120} />}
+        {variant === "visible" && <Gauge amount={acc} total={120} />}
       </ResultBox>
       <ResultBox className="flex flex-col items-center">
         <p className="text-center text-2xl font-medium">Stutters</p>
