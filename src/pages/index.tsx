@@ -12,6 +12,7 @@ import { LengthSelector } from "~/components/home page/length-selector";
 import AudioButtons from "~/components/home page/audio-recorder";
 import { choosePhrase, type lengths } from "~/utils/phrases";
 import Results from "~/components/home page/results";
+import { motion } from "framer-motion";
 
 const sampleData = {
   wpm: 51,
@@ -53,6 +54,13 @@ const sampleData = {
   ],
 };
 
+const container = {
+  hidden: { height: 0 },
+  visible: {
+    height: "30vh",
+  },
+};
+
 export default function Home() {
   const [phrase, setPhrase] = useState("");
   const [length, setLength] = useState<lengths>(10);
@@ -64,6 +72,16 @@ export default function Home() {
 
   return (
     <Layout>
+      <motion.div
+        initial="hidden"
+        animate={didFinish ? "hidden" : "visible"}
+        variants={container}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+        }}
+      />
       <div className="bg-highlight flex w-fit transform gap-2 rounded px-4 py-2">
         <ToolbarButton Icon={BsInfo} href="/info" />
         <ToolbarButton Icon={CgDarkMode} onClick={changeColor} />
