@@ -1,17 +1,55 @@
 import { cn } from "~/utils/cn";
 import Gauge from "./gauge";
 import { BarList, DonutChart } from "@tremor/react";
+import { motion } from "framer-motion";
 
-const Results: React.FC<{
+export type BarData = { name: string; value: number };
+export type FillerData = { word: string; count: number };
+
+export interface ResultData {
   wpm: number;
   acc: number;
   stutters: number;
   hardOnset: number;
-  bars: { name: string; value: number }[];
-  fillers: { word: string; count: number }[];
-}> = ({ wpm, acc, stutters, hardOnset, bars, fillers }) => {
+  bars: BarData[];
+  fillers: FillerData[];
+}
+
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const item = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
+
+const Results: React.FC<ResultData> = ({
+  wpm,
+  acc,
+  stutters,
+  hardOnset,
+  bars,
+  fillers,
+}) => {
   return (
-    <div className="text-highlight mt-4 grid w-full grid-cols-4 grid-rows-2 gap-3 px-10">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={container}
+      className="text-highlight mt-4 grid w-full grid-cols-4 grid-rows-2 gap-3 px-10"
+    >
       <ResultBox className="flex flex-col items-center justify-center">
         <p className="text-center text-2xl font-medium">WPM</p>
         <Gauge id="WPM" amount={wpm} total={120} />
@@ -52,7 +90,7 @@ const Results: React.FC<{
           ))}
         </div> */}
       </ResultBox>
-    </div>
+    </motion.div>
   );
 };
 
@@ -60,14 +98,15 @@ const ResultBox: React.FC<
   React.PropsWithChildren<{ size?: number; className?: string }>
 > = ({ size = 1, className, children }) => {
   return (
-    <div
+    <motion.div
+      variants={item}
       className={cn(
         `col-span-${size} w-full items-center justify-center rounded border-2 border-highlight-light px-4 py-6 dark:border-highlight-dark`,
         className
       )}
     >
       {children}
-    </div>
+    </motion.div>
   );
 };
 
