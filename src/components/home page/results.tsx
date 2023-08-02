@@ -2,6 +2,7 @@ import { cn } from "~/utils/cn";
 import Gauge from "./gauge";
 import { BarList, DonutChart } from "@tremor/react";
 import { motion } from "framer-motion";
+import { useIsDark } from "~/utils/colorMode";
 
 export type BarData = { name: string; value: number };
 export type FillerData = { word: string; count: number };
@@ -48,12 +49,14 @@ const Results: React.FC<ResultSectionProps> = ({
   fillers,
   variant = "visible",
 }) => {
+  const { isDark } = useIsDark();
+
   return (
     <motion.div
       initial="hidden"
       animate={variant}
       variants={container}
-      className="text-highlight mt-4 grid w-full grid-cols-4 grid-rows-2 gap-3 px-10"
+      className="text-highlight mt-4 flex w-full flex-col gap-3 px-10 sm:grid sm:grid-cols-2 md:grid-cols-4"
     >
       <ResultBox className="flex flex-col items-center justify-center">
         <p className="text-center text-2xl font-medium">WPM</p>
@@ -81,7 +84,9 @@ const Results: React.FC<ResultSectionProps> = ({
           data={fillers}
           index="word"
           category="count"
-          colors={["orange", "orange", "orange", "orange", "orange", "orange"]}
+          colors={
+            isDark ? new Array(10).fill("stone") : new Array(10).fill("orange")
+          }
           label={`${fillers.reduce(
             (partialSum, a) => partialSum + a.count,
             0
