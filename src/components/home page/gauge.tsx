@@ -6,6 +6,7 @@ const Gauge: React.FC<{ amount: number; total: number; id: string }> = ({
   total,
   id,
 }) => {
+  console.log("open");
   return (
     <div className="flex w-3/5 flex-col items-center">
       <GaugeChart
@@ -17,7 +18,8 @@ const Gauge: React.FC<{ amount: number; total: number; id: string }> = ({
         needleColor="transparent"
         needleBaseColor="transparent"
         hideText
-        className="my-3"
+        style={{ width: "fit-content" }}
+        className="my-3 w-fit"
       />
       <p className="text-3xl font-bold">{amount}</p>
     </div>
